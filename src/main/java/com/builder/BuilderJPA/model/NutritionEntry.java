@@ -1,21 +1,16 @@
 package com.builder.BuilderJPA.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "NUTRITION")
 public class NutritionEntry {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "ID")
-	private int id;
+	@EmbeddedId
+	private CompositeKey key;
 
 	@Column(name = "PAYLOAD")
 	private String payload;
@@ -23,16 +18,17 @@ public class NutritionEntry {
 	NutritionEntry() {
 	}
 
-	public NutritionEntry(String payload) {
+	public NutritionEntry(CompositeKey key, String payload) {
+		this.key = key;
 		this.payload = payload;
 	}
 
-	public  int getId() {
-		return id;
+	public CompositeKey getKey() {
+		return key;
 	}
 
-	void setId(int id) {
-		this.id = id;
+	void setKey(CompositeKey key) {
+		this.key = key;
 	}
 
 	public String getPayload() {

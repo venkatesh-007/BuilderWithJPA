@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.builder.BuilderJPA.model.CompositeKey;
 import com.builder.BuilderJPA.model.NutritionEntry;
 import com.builder.BuilderJPA.model.Nutrition;
 import com.builder.BuilderJPA.repo.NutritionRepo;
@@ -33,7 +34,8 @@ public class BuilderJpaApplication {
 
 	@PostMapping("/nuts")
 	public void insert(@RequestBody  Nutrition nut) throws IOException {
-		NutritionEntry entry = new NutritionEntry(JsonUtils.convertObjectToString(nut));
+
+		NutritionEntry entry = new NutritionEntry(new CompositeKey(nut.getId(), nut.getServingSize(), nut.getServings()), JsonUtils.convertObjectToString(nut));
 		nrepo.save(entry);
 	}
 
