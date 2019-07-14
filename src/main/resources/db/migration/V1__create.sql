@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS Nutrition;
-
-CREATE TABLE Nutrition(
+CREATE TABLE Nutritionfact(
   id INT,
   SERVINGSIZE INT,
   SERVINGS INT,

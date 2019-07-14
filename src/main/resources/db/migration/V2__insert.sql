@@ -1,0 +1,1 @@
+insert into Nutritionfact Values (1,2,466,'Lokjl');
